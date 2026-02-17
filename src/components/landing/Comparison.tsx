@@ -1,18 +1,47 @@
 import { motion } from "framer-motion";
-import { X, Check } from "lucide-react";
+import { Sprout, Store, Truck, Hammer, ShoppingCart } from "lucide-react";
 
-const rows = [
-  { feature: "Curriculum", traditional: "Static, one-size-fits-all", ours: "Adaptive skill-based paths" },
-  { feature: "Problems", traditional: "Random GPT-generated", ours: "Curated & verified database" },
-  { feature: "Scoring", traditional: "Single pass/fail score", ours: "Multi-dimensional evaluation" },
-  { feature: "Communication", traditional: "Not measured", ours: "English articulation analysis" },
-  { feature: "Roadmap", traditional: "Manual or none", ours: "AI-generated learning path" },
-  { feature: "Difficulty", traditional: "No adaptation", ours: "Adapts to your skill level" },
+const stakeholders = [
+  {
+    icon: Sprout,
+    role: "Farmers",
+    benefit: "Fair market access + trust-based loans",
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+  },
+  {
+    icon: Store,
+    role: "Shop Owners",
+    benefit: "Digital inventory + delivery + labor support",
+    color: "text-accent",
+    bgColor: "bg-accent/10",
+  },
+  {
+    icon: Truck,
+    role: "Delivery Partners",
+    benefit: "Flexible earning with 3-model delivery",
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+  },
+  {
+    icon: Hammer,
+    role: "Load Workers",
+    benefit: "On-demand micro-jobs with digital payment",
+    color: "text-accent",
+    bgColor: "bg-accent/10",
+  },
+  {
+    icon: ShoppingCart,
+    role: "Customers",
+    benefit: "Fresh vegetables + choice + transparent pricing",
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+  },
 ];
 
 const Comparison = () => {
   return (
-    <section className="py-24 relative">
+    <section className="py-24 relative bg-secondary/30">
       <div className="container px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,43 +49,33 @@ const Comparison = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-mono text-primary tracking-wider uppercase">Comparison</span>
-          <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
-            Not Your Average <span className="text-gradient-primary">LMS</span>
+          <span className="text-sm font-medium text-primary tracking-wider uppercase">Stakeholders</span>
+          <h2 className="font-display text-3xl md:text-5xl font-bold mt-3 mb-4">
+            Everyone <span className="text-gradient-primary">Benefits</span>
           </h2>
+          <p className="text-muted-foreground max-w-lg mx-auto">
+            A platform that creates value for every part of the agri supply chain.
+          </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto rounded-lg border border-border overflow-hidden"
-        >
-          {/* Header */}
-          <div className="grid grid-cols-3 bg-secondary/50 border-b border-border">
-            <div className="p-4 font-semibold text-sm text-muted-foreground">Feature</div>
-            <div className="p-4 font-semibold text-sm text-muted-foreground text-center">Traditional LMS</div>
-            <div className="p-4 font-semibold text-sm text-primary text-center">Our Platform</div>
-          </div>
-          {rows.map((row, i) => (
-            <div
-              key={row.feature}
-              className={`grid grid-cols-3 border-b border-border last:border-b-0 ${
-                i % 2 === 0 ? "bg-card" : "bg-secondary/20"
-              }`}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+          {stakeholders.map((s, i) => (
+            <motion.div
+              key={s.role}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-card border border-border rounded-xl p-6 text-center hover:shadow-glow transition-all duration-300 hover:border-primary/30"
             >
-              <div className="p-4 text-sm font-medium text-foreground">{row.feature}</div>
-              <div className="p-4 text-sm text-muted-foreground text-center flex items-center justify-center gap-2">
-                <X className="h-4 w-4 text-destructive shrink-0" />
-                <span className="hidden sm:inline">{row.traditional}</span>
+              <div className={`w-14 h-14 rounded-xl ${s.bgColor} flex items-center justify-center mx-auto mb-4`}>
+                <s.icon className={`h-7 w-7 ${s.color}`} />
               </div>
-              <div className="p-4 text-sm text-foreground text-center flex items-center justify-center gap-2">
-                <Check className="h-4 w-4 text-primary shrink-0" />
-                <span className="hidden sm:inline">{row.ours}</span>
-              </div>
-            </div>
+              <h3 className="font-display font-semibold text-foreground mb-2">{s.role}</h3>
+              <p className="text-sm text-muted-foreground">{s.benefit}</p>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
