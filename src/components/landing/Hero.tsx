@@ -55,7 +55,7 @@ const Hero = () => {
           </div>
 
           {/* 3 pillars */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+          <div className="grid grid-cols-3 gap-2 md:gap-4">
             {[
               { icon: ShoppingBasket, label: "Real-Time Inventory", desc: "Live stock, prices & freshness from local shops" },
               { icon: Truck, label: "3-Way Delivery", desc: "Self pickup, seller delivery, or platform rider" },
@@ -66,11 +66,11 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + i * 0.15 }}
-                className="bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-xl p-4 md:p-5 text-center"
+                className="bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-xl p-2 sm:p-4 md:p-5 text-center"
               >
-                <item.icon className="h-7 w-7 text-accent mx-auto mb-3" />
-                <h3 className="font-display font-semibold text-primary-foreground mb-1">{item.label}</h3>
-                <p className="text-sm text-primary-foreground/70">{item.desc}</p>
+                <item.icon className="h-5 w-5 sm:h-7 sm:w-7 text-accent mx-auto mb-1 sm:mb-3" />
+                <h3 className="font-display font-semibold text-primary-foreground text-xs sm:text-sm md:text-base mb-0.5 sm:mb-1 leading-tight">{item.label}</h3>
+                <p className="text-xs text-primary-foreground/70 hidden sm:block">{item.desc}</p>
               </motion.div>
             ))}
           </div>
